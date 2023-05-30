@@ -1,0 +1,53 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              colorgray: "#F2F2F2",
+      btnbackcolor: "#007BFF",
+      btncolor: "#FFFBFF",
+      colorback: "#3298DA",
+            }
+          }
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div class="lg:flex w-full h-screen">
+      <div
+        id="box1"
+        class="flex items-center justify-center bg-colorback lg:w-1/2 lg:h-full lg:bg-colorback w-full h-full">
+        <img src="/img/card.jpg" alt="" />
+      </div>
+      <div class="grid-flow-row justify-items-center mx-auto">
+        <img class="w-40 mx-auto" src="/img/uzb.jpg" alt="" />
+        <h1 class="text-center text-5xl mb-12">Partiyaga a'zo bo'lish</h1>
+        <div
+          class="text-center mb-12 py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition">
+          Kirish
+        </div>
+        <div
+          class="text-center mb-12 py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition">
+          Ro'yihatdan o'tish
+        </div>
+        <iframe
+          class="w-full"
+          src="https://www.youtube.com/embed/NnIOnwodeIs"
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </body>
+</html>
