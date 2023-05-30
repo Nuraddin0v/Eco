@@ -6,5 +6,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true,
     "source.fixAll.format": true
-  }
+  },
+  "typescript.suggestionActions.enabled": false,
+  "javascript.suggestionActions.enabled": false
 }
