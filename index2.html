@@ -48,11 +48,13 @@
         right: -300px;
         display: none;
       }
+
       .open {
         right: 0;
       }
     </style>
   </head>
+
   <body>
     <nav class="bg-bggreen text-white w-full overflow-hidden">
       <div class="container mx-auto flex justify-between">
@@ -115,303 +117,95 @@
     <section id="boxes2" class="container mx-auto px-5 py-3">
       <h1 class="text-title text-center">Shaxsiy kabinet</h1>
       <div class="lg:flex">
-        <div class="flex-col lg:mx-auto w-full lg:w-1/2 mx-4">
-          <img class="mx-auto my-10" src="/img/card2.jpg" alt="" />
-          <p class="text-center opacity-50">
-            A'zolik tasdiqlanganidan so'ng, a'zolik guvohnomasini yuklab olishingiz mumkin
-          </p>
-          <div class="flex">
-            <div class="max-w-xs mx-auto">
-              <div
-                x-data="select({ data: {qo:'Qoraqolpoqiston', an: 'Andijon', bu: 'Buxoro', sm: 'Samarqad', fr: `Farg'ona`, na: 'Navoiy', xo: 'Xorazm', jz: 'Jizzah', sr: 'Sirdaryo', to: 'Toshkent', su: 'Surxondaryo', qa: 'Qashqadaryo', nm:'Namangan' }, emptyOptionsMessage: 'No countries match your search.', name: 'country', placeholder: 'Viloyat' })"
-                x-init="init()"
-                @click.away="closeListbox()"
-                @keydown.escape="closeListbox()"
-                class="relative text-btncolor"
-              >
-                <span class="inline-block w-full rounded-md shadow-sm">
-                  <button
-                    x-ref="button"
-                    @click="toggleListboxVisibility()"
-                    :aria-expanded="open"
-                    aria-haspopup="listbox"
-                    class="bg-btnbackcolor relative z-0 w-32 py-2 pl-3 pr-10 text-left transition duration-150 ease-in-out border border-gray-300 rounded-md cursor-default focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
+        <div class="flex flex-col lg:mx-auto lg:grid lg:grid-cols-2 w-full mx-4">
+          <div>
+            <img class="mx-auto my-10" src="/img/card2.jpg" alt="" />
+            <p class="text-center opacity-50 mb-5">
+              A'zolik tasdiqlanganidan so'ng, a'zolik guvohnomasini yuklab olishingiz mumkin
+            </p>
+            <div class="grid grid-cols-2 gap-5">
+              <div class="w-full">
+                <div class="text-btncolor w-full">
+                  <select
+                    id="viloyat"
+                    name="viloyat"
+                    class="w-full rounded-md bg-btnbackcolor px-5 py-2 transition duration-150 border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
+                  ></select>
+                </div>
+              </div>
+              <div class="w-full">
+                <div class="text-btncolor w-full">
+                  <select
+                    id="tuman"
+                    name="tuman"
+                    class="w-full rounded-md bg-btnbackcolor px-5 py-2 transition duration-150 border border-gray-300 focus:outline-none focus:shadow-outline-blue focus:border-blue-300"
                   >
-                    <span
-                      x-show="!open"
-                      x-text="value in options ? options[value] : placeholder"
-                      :class="{ 'text-btncolor': ! (value in options) }"
-                      class="block truncate"
-                    ></span>
-
-                    <input
-                      x-ref="search"
-                      x-show="open"
-                      x-model="search"
-                      @keydown.enter.stop.prevent="selectOption()"
-                      @keydown.arrow-up.prevent="focusPreviousOption()"
-                      @keydown.arrow-down.prevent="focusNextOption()"
-                      type="search"
-                      class="w-full h-full form-control focus:outline-none bg-btnbackcolor"
-                    />
-
-                    <span
-                      class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
-                    >
-                      <svg
-                        class="w-5 h-5 text-btnColor"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                        ></path>
-                      </svg>
-                    </span>
-                  </button>
-                </span>
-
-                <div
-                  x-show="open"
-                  x-transition:leave="transition ease-in duration-100"
-                  x-transition:leave-start="opacity-100"
-                  x-transition:leave-end="opacity-0"
-                  x-cloak
-                  class="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg"
-                >
-                  <ul
-                    x-ref="listbox"
-                    @keydown.enter.stop.prevent="selectOption()"
-                    @keydown.arrow-up.prevent="focusPreviousOption()"
-                    @keydown.arrow-down.prevent="focusNextOption()"
-                    role="listbox"
-                    :aria-activedescendant="focusedOptionIndex ? name + 'Option' + focusedOptionIndex : null"
-                    tabindex="-1"
-                    class="py-1 overflow-auto text-base leading-6 rounded-md shadow-xs max-h-60 focus:outline-none sm:text-sm sm:leading-5"
-                  >
-                    <template x-for="(key, index) in Object.keys(options)" :key="index">
-                      <li
-                        :id="name + 'Option' + focusedOptionIndex"
-                        @click="selectOption()"
-                        @mouseenter="focusedOptionIndex = index"
-                        @mouseleave="focusedOptionIndex = null"
-                        role="option"
-                        :aria-selected="focusedOptionIndex === index"
-                        :class="{ 'text-white bg-btnbackcolor': index === focusedOptionIndex, 'text-gray-900': index !== focusedOptionIndex }"
-                        class="relative py-2 pl-3 text-gray-900 cursor-default select-none pr-9"
-                      >
-                        <span
-                          x-text="Object.values(options)[index]"
-                          :class="{ 'font-semibold': index === focusedOptionIndex, 'font-normal': index !== focusedOptionIndex }"
-                          class="block font-normal truncate"
-                        ></span>
-
-                        <span
-                          x-show="key === value"
-                          :class="{ 'text-white': index === focusedOptionIndex, 'text-btnbackcolor': index !== focusedOptionIndex }"
-                          class="absolute inset-y-0 right-0 flex items-center pr-4 text-btnbackcolor"
-                        >
-                          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path
-                              fill-rule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </li>
-                    </template>
-
-                    <div
-                      x-show="! Object.keys(options).length"
-                      x-text="emptyOptionsMessage"
-                      class="px-3 py-2 text-gray-900 cursor-default select-none"
-                    ></div>
-                  </ul>
+                    <option value="none">Tumanni tanlang</option>
+                  </select>
                 </div>
               </div>
             </div>
-            <div class="max-w-xs mx-auto">
-              <div
-                x-data="select({ data: {qo:'Qoraqolpoqiston', an: 'Andijon', bu: 'Buxoro', sm: 'Samarqad', fr: `Farg'ona`, na: 'Navoiy', xo: 'Xorazm', jz: 'Jizzah', sr: 'Sirdaryo', to: 'Toshkent', su: 'Surxondaryo', qa: 'Qashqadaryo', nm:'Namangan' }, emptyOptionsMessage: 'No countries match your search.', name: 'country', placeholder: 'Tuman' })"
-                x-init="init()"
-                @click.away="closeListbox()"
-                @keydown.escape="closeListbox()"
-                class="relative text-btncolor"
+          </div>
+          <div class="mx-auto w-full">
+            <h1 class="text-center text-4xl mt-10">
+              O'zbekiston Ekologik partiyasiga a'zo bo'laman
+            </h1>
+            <section class="container lg:p-6 font-mono">
+              <div class="w-full mb-8 overflow-hidden">
+                <div class="w-full overflow-x-auto">
+                  <table class="w-full">
+                    <tbody class="bg-white">
+                      <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
+                        <td class="py-3 text-md font-semibold border">F.I.Sh:</td>
+                        <td class="px-4 py-3 text-sm border" id="fio"></td>
+                      </tr>
+                      <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
+                        <td class="py-3 text-md font-semibold border">Tug'ilgan sana:</td>
+                        <td class="px-4 py-3 text-sm border" id="birthday"></td>
+                      </tr>
+                      <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
+                        <td class="py-3 text-md font-semibold border">Adres:</td>
+                        <td class="px-4 py-3 text-sm border" id="address"></td>
+                      </tr>
+                      <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
+                        <td class="py-3 border text-md font-semibold">Pasport:</td>
+                        <td class="px-4 py-3 border text-sm" id="passport"></td>
+                      </tr>
+                      <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
+                        <td class="py-3 border text-md font-semibold">Telefon raqam:</td>
+                        <td class="px-4 py-3 border text-sm" id="phone"></td>
+                      </tr>
+                      <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
+                        <td class="py-3 border text-md font-semibold">Email:</td>
+                        <td class="px-4 py-3 border text-sm" id="email"></td>
+                      </tr>
+                      <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
+                        <td class="py-3 border text-md font-semibold">A'zolik statusi:</td>
+                        <td class="px-4 py-3 border text-sm" id="status">Tasdiqlangan</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            <div class="flex lg:px-7 items-center">
+              <input class="w-12 h-12 mr-5" type="checkbox" />
+              <button
+                class="text-center w-full py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition"
               >
-                <span class="inline-block w-full rounded-md shadow-sm">
-                  <button
-                    x-ref="button"
-                    @click="toggleListboxVisibility()"
-                    :aria-expanded="open"
-                    aria-haspopup="listbox"
-                    class="bg-btnbackcolor w-32 relative z-0 py-2 pl-3 pr-10 text-left transition duration-150 ease-in-out border border-gray-300 rounded-md cursor-default focus:outline-none focus:shadow-outline-blue focus:border-blue-300 sm:text-sm sm:leading-5"
-                  >
-                    <span
-                      x-show="! open"
-                      x-text="value in options ? options[value] : placeholder"
-                      :class="{ 'text-btncolor': ! (value in options) }"
-                      class="block truncate"
-                    ></span>
-
-                    <input
-                      x-ref="search"
-                      x-show="open"
-                      x-model="search"
-                      @keydown.enter.stop.prevent="selectOption()"
-                      @keydown.arrow-up.prevent="focusPreviousOption()"
-                      @keydown.arrow-down.prevent="focusNextOption()"
-                      type="search"
-                      class="w-full h-full form-control focus:outline-none bg-btnbackcolor"
-                    />
-
-                    <span
-                      class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
-                    >
-                      <svg
-                        class="w-5 h-5"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="1.5"
-                        viewBox="0 0 20 20"
-                        xmlns="http://www.w3.org/2000/svg"
-                        aria-hidden="true"
-                      >
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          d="M19.5 8.25l-7.5 7.5-7.5-7.5"
-                        ></path>
-                      </svg>
-                    </span>
-                  </button>
-                </span>
-
-                <div
-                  x-show="open"
-                  x-transition:leave="transition ease-in duration-100"
-                  x-transition:leave-start="opacity-100"
-                  x-transition:leave-end="opacity-0"
-                  x-cloak
-                  class="absolute z-10 w-full mt-1 bg-white rounded-md shadow-lg"
-                >
-                  <ul
-                    x-ref="listbox"
-                    @keydown.enter.stop.prevent="selectOption()"
-                    @keydown.arrow-up.prevent="focusPreviousOption()"
-                    @keydown.arrow-down.prevent="focusNextOption()"
-                    role="listbox"
-                    :aria-activedescendant="focusedOptionIndex ? name + 'Option' + focusedOptionIndex : null"
-                    tabindex="-1"
-                    class="py-1 overflow-auto text-base leading-6 rounded-md shadow-xs max-h-60 focus:outline-none sm:text-sm sm:leading-5"
-                  >
-                    <template x-for="(key, index) in Object.keys(options)" :key="index">
-                      <li
-                        :id="name + 'Option' + focusedOptionIndex"
-                        @click="selectOption()"
-                        @mouseenter="focusedOptionIndex = index"
-                        @mouseleave="focusedOptionIndex = null"
-                        role="option"
-                        :aria-selected="focusedOptionIndex === index"
-                        :class="{ 'text-white bg-btnbackcolor': index === focusedOptionIndex, 'text-gray-900': index !== focusedOptionIndex }"
-                        class="relative py-2 pl-3 text-gray-900 cursor-default select-none pr-9"
-                      >
-                        <span
-                          x-text="Object.values(options)[index]"
-                          :class="{ 'font-semibold': index === focusedOptionIndex, 'font-normal': index !== focusedOptionIndex }"
-                          class="block font-normal truncate"
-                        ></span>
-
-                        <span
-                          x-show="key === value"
-                          :class="{ 'text-white': index === focusedOptionIndex, 'text-btnbackcolor': index !== focusedOptionIndex }"
-                          class="absolute inset-y-0 right-0 flex items-center pr-4 text-btnbackcolor"
-                        >
-                          <svg class="w-5 h-5" viewBox="0 0 20 20" fill="currentColor">
-                            <path
-                              fill-rule="evenodd"
-                              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                              clip-rule="evenodd"
-                            />
-                          </svg>
-                        </span>
-                      </li>
-                    </template>
-
-                    <div
-                      x-show="! Object.keys(options).length"
-                      x-text="emptyOptionsMessage"
-                      class="px-3 py-2 text-gray-900 cursor-default select-none"
-                    ></div>
-                  </ul>
-                </div>
-                </div>
+                Tasdiqlayman
+              </button>
             </div>
           </div>
-          <h1 class="text-center text-4xl mt-10">O'zbekiston Ekologik partiyasiga a'zo bo'laman</h1>
         </div>
-        <div class="mx-auto w-full lg:w-1/2">
-          <section class="container lg:p-6 font-mono">
-            <div class="w-full mb-8 overflow-hidden">
-              <div class="w-full overflow-x-auto">
-                <table class="w-full">
-                  <tbody class="bg-white">
-                    <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
-                      <td class="py-3 text-md font-semibold border">F.I.Sh:</td>
-                      <td class="px-4 py-3 text-sm border">AZIZOVA AZIZAXON ODILJON QIZI</td>
-                    </tr>
-                    <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
-                      <td class="py-3 text-md font-semibold border">Tug'ilgan sana:</td>
-                      <td class="px-4 py-3 text-sm border">13-02-1997</td>
-                    </tr>
-                    <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
-                      <td class="py-3 text-md font-semibold border">Adres:</td>
-                      <td class="px-4 py-3 text-sm border">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, magni?
-                      </td>
-                    </tr>
-                    <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
-                      <td class="py-3 border text-md font-semibold">Pasport:</td>
-                      <td class="px-4 py-3 border text-sm">KA1889632</td>
-                    </tr>
-                    <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
-                      <td class="py-3 border text-md font-semibold">Telefon raqam:</td>
-                      <td class="px-4 py-3 border text-sm">+998990277981</td>
-                    </tr>
-                    <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
-                      <td class="py-3 border text-md font-semibold">Email:</td>
-                      <td class="px-4 py-3 border text-sm">hpavilion115@gmail.com</td>
-                    </tr>
-                    <tr class="text-gray-700 text-center even:bg-white odd:bg-colorgray">
-                      <td class="py-3 border text-md font-semibold">A'zolik statusi:</td>
-                      <td class="px-4 py-3 border text-sm">Tasdiqlangan</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </section>
-          <div class="flex lg:px-7 items-center">
-            <input class="w-12 h-12 mr-5" type="checkbox" />
-            <button
-              class="text-center w-full py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition"
-            >
-              Tasdiqlayman
-            </button>
-          </div>
-        </section>
       </div>
     </section>
     <script>
       const closeButton = document.querySelector("#closeButton");
       const openMobileMenu = document.querySelector("#openMobileMenu");
       const mobileMenu = document.querySelector("#mobileMenu");
+      const viloyat = document.getElementById("viloyat");
+      const tuman = document.getElementById("tuman");
       closeButton.addEventListener("click", () => {
         mobileMenu.classList.remove("open");
         mobileMenu.classList.add("close");
@@ -420,105 +214,80 @@
         mobileMenu.classList.remove("close");
         mobileMenu.classList.add("open");
       });
-      function select(config) {
-        console.log(config);
-        return {
-          data: config.data,
 
-          emptyOptionsMessage: config.emptyOptionsMessage ?? "No results match your search.",
-
-          focusedOptionIndex: null,
-
-          name: config.name,
-
-          open: true,
-
-          options: {},
-
-          placeholder: config.placeholder ?? "Select an option",
-
-          search: "",
-
-          value: config.value,
-
-          closeListbox: function () {
-            this.open = false;
-
-            this.focusedOptionIndex = null;
-
-            this.search = "";
-          },
-
-          focusNextOption: function () {
-            if (this.focusedOptionIndex === null)
-              return (this.focusedOptionIndex = Object.keys(this.options).length - 1);
-
-            if (this.focusedOptionIndex + 1 >= Object.keys(this.options).length) return;
-
-            this.focusedOptionIndex++;
-
-            this.$refs.listbox.children[this.focusedOptionIndex].scrollIntoView({
-              block: "center",
+      function getViloyat() {
+        fetch("https://azolik.ecouz.uz/api/regions")
+          .then(data => {
+            return data.json();
+          })
+          .then(data => {
+            const optionInitial = document.createElement("option");
+            const optionTextInitial = document.createTextNode("Viloyatni tanlang");
+            optionInitial.setAttribute("value", "none");
+            optionInitial.appendChild(optionTextInitial);
+            viloyat.appendChild(optionInitial);
+            const viloyatlar = data?.map(item => {
+              const name = JSON.parse(item.name);
+              const option = document.createElement("option");
+              const optionText = document.createTextNode(name.uz);
+              option.setAttribute("value", item.id);
+              option.appendChild(optionText);
+              viloyat.appendChild(option);
+              return option;
             });
-          },
+          });
+      }
 
-          focusPreviousOption: function () {
-            if (this.focusedOptionIndex === null) return (this.focusedOptionIndex = 0);
+      function getUserData() {
+        fetch("https://azolik.ecouz.uz/api/auth/me", {
+          method: "get",
+          headers: new Headers({
+            Authorization: "4bbddf02-b156-4b8b-9006-5b43005ffe14",
+          }),
+        })
+          .then(data => {
+            return data.json();
+          })
+          .then(data => {
+            console.log(data);
+            document.getElementById("fio").innerText = data.data?.name;
+            document.getElementById("birthday").innerText = data.data?.name;
+            document.getElementById("address").innerText = data.data?.name;
+            document.getElementById("passport").innerText = data.data?.passport_number;
+            document.getElementById("phone").innerText = data.data?.name;
+            document.getElementById("email").innerText = data.data?.email;
+            document.getElementById("status").innerText = data.data?.name;
+          });
+      }
 
-            if (this.focusedOptionIndex <= 0) return;
+      viloyat.addEventListener("change", data => {
+        tuman.innerHTML = null;
+        const optionInitial = document.createElement("option");
+        const optionTextInitial = document.createTextNode("Tumanni tanlang");
+        optionInitial.setAttribute("value", "none");
+        optionInitial.appendChild(optionTextInitial);
+        tuman.appendChild(optionInitial);
 
-            this.focusedOptionIndex--;
-
-            this.$refs.listbox.children[this.focusedOptionIndex].scrollIntoView({
-              block: "center",
-            });
-          },
-
-          init: function () {
-            this.options = this.data;
-
-            if (!(this.value in this.options)) this.value = null;
-
-            this.$watch("search", value => {
-              if (!this.open || !value) return (this.options = this.data);
-
-              this.options = Object.keys(this.data)
-                .filter(key => this.data[key].toLowerCase().includes(value.toLowerCase()))
-                .reduce((options, key) => {
-                  options[key] = this.data[key];
-                  return options;
-                }, {});
-            });
-          },
-
-          selectOption: function () {
-            if (!this.open) return this.toggleListboxVisibility();
-
-            this.value = Object.keys(this.options)[this.focusedOptionIndex];
-
-            this.closeListbox();
-          },
-
-          toggleListboxVisibility: function () {
-            if (this.open) return this.closeListbox();
-
-            this.focusedOptionIndex = Object.keys(this.options).indexOf(this.value);
-
-            if (this.focusedOptionIndex < 0) this.focusedOptionIndex = 0;
-
-            this.open = true;
-
-            this.$nextTick(() => {
-              this.$refs.search.focus();
-
-              this.$refs.listbox.children[this.focusedOptionIndex].scrollIntoView({
-                block: "center",
+        viloyat.value !== "none" &&
+          fetch(`https://azolik.ecouz.uz/api/districts/by-region/${viloyat?.value}`)
+            .then(data => {
+              return data.json();
+            })
+            .then(data => {
+              const tumanlar = data?.map(item => {
+                const name = JSON.parse(item.name);
+                const option = document.createElement("option");
+                const optionText = document.createTextNode(name.uz);
+                option.setAttribute("value", item.id);
+                option.appendChild(optionText);
+                tuman.appendChild(option);
+                return option;
               });
             });
-          },
-        };
-      }
+      });
+
+      getViloyat();
+      getUserData();
     </script>
-    <script src="https://unpkg.com/alpinejs" defer></script>
   </body>
 </html>
