@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O'zbekiston Ekologik Partiyasi</title>
+    <meta name="title" content="O'zbekiston Ekologik Partiyasi" />
+    <meta name="description" content="O'zbekiston Ekologik Partiyasiga a'zolik sayti." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://azolik.ecouz.uz/" />
+    <meta property="og:title" content="O'zbekiston Ekologik Partiyasi" />
+    <meta property="og:description" content="O'zbekiston Ekologik Partiyasiga a'zolik sayti." />
+    <meta property="og:image" content="/img/uzb.png" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://azolik.ecouz.uz/" />
+    <meta property="twitter:title" content="O'zbekiston Ekologik Partiyasi" />
+    <meta
+      property="twitter:description"
+      content="O'zbekiston Ekologik Partiyasiga a'zolik sayti."
+    />
+    <meta property="twitter:image" content="/img/uzb.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              colorgray: "#F2F2F2",
+              btnbackcolor: "#007BFF",
+              btncolor: "#FFFBFF",
+              colorback: "#3298DA",
+              bggreen: "#52c306",
+              bgGrey: "#202020",
+            },
+            fontSize: {
+              title: "clamp(1.75rem, 1.7419rem + 1.2903vw, 2.5rem)",
+              bigtext: "clamp(1.125rem, 1.7419rem + 1.2903vw, 1.75rem)",
+              mediumText: "clamp(1rem, 1.7419rem + 1.2903vw, 1.25rem)",
+              paragraph: "clamp(0.875rem, 0.81rem + 0.3252vw, 1.125rem)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .close {
+        right: -300px;
+        display: none;
+      }
+
+      .open {
+        right: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="bg-bggreen text-white w-full overflow-hidden">
+      <div class="container mx-auto flex justify-between">
+        <div class="px-5 xl:px-12 py-2 flex w-full justify-between items-center">
+          <a class="text-3xl font-bold font-heading" href="#">
+            <img class="h-12" src="/img/logo.png" alt="logo" />
+          </a>
+          <!-- Nav Links -->
+          <ul class="hidden md:flex px-2 font-semibold font-heading gap-4">
+            <li>
+              <a class="hover:text-gray-200 py-2 px-2" href="https://ecouz.uz/">Bosh sahifa</a>
+            </li>
+            <li><a class="hover:text-gray-200 py-2 px-2" href="#">A'zo bo'lish</a></li>
+            <li><a class="hover:text-gray-200 py-2 px-2" href="#">Obunalar tarixi</a></li>
+          </ul>
+        </div>
+
+        <button class="navbar-burger self-center mr-8 md:hidden" type="button" id="openMobileMenu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 hover:text-gray-200"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="absolute z-10 top-0 close bottom-0 w-[250px] bg-bgGrey transition-all duration-200 delay-200"
+        id="mobileMenu"
+      >
+        <button type="button" id="closeButton" class="px-4 py-2 absolute right-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-7 h-7 font-bold"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <ul class="flex flex-col px-5 font-semibold font-heading gap-4 mt-10">
+          <li>
+            <a class="hover:text-gray-200 py-2 px-2" href="https://ecouz.uz/">Bosh sahifa</a>
+          </li>
+          <li><a class="hover:text-gray-200 py-2 px-2" href="#">A'zo bo'lish</a></li>
+          <li><a class="hover:text-gray-200 py-2 px-2" href="#">Obunalar tarixi</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section id="boxes2" class="container mx-auto px-5 py-3">
+      <h1 class="text-title text-center uppercase mt-5">A'zolik guvohnomasiga buyurtma berish</h1>
+      <div class="lg:flex mt-5">
+        <div class="flex flex-col lg:mx-auto lg:grid lg:grid-cols-2 w-full mx-4">
+          <div>
+            <img class="mx-auto my-10" src="/img/card2.jpg" alt="" />
+            <p class="text-center text-bigtext font-medium opacity-60 mb-5">
+              Buyurtma 10 kun ichida yetkaziladi
+            </p>
+          </div>
+          <div class="mx-auto w-full">
+            <section class="container lg:p-6 font-mono">
+              <div class="w-full flex justify-center flex-col gap-8">
+                <div class="flex items-center gap-5">
+                  <h3 class="font-semibold text-2xl w-32">F.I.Sh</h3>
+                  <h3 class="font-medium text-xl bg-gray-400 px-7 py-2 rounded w-full">
+                    ERGASHEV JAHONGIR ABDUSATTOROVICH
+                  </h3>
+                </div>
+                <div class="flex items-center gap-5">
+                  <h3 class="font-semibold text-2xl w-32">TEL</h3>
+                  <h3 class="font-medium text-xl bg-gray-400 px-7 py-2 rounded w-full">
+                    +998903778990
+                  </h3>
+                </div>
+              </div>
+              <p class="text-center text-bigtext font-medium opacity-60 mb-5 mt-10">
+                Buyurtma berish 10 ming so'm
+              </p>
+            </section>
+            <div class="flex lg:px-7 items-center mt-5">
+              <input class="w-12 h-12 mr-5" type="checkbox" />
+              <button
+                class="text-center w-full py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition"
+              >
+                Tasdiqlayman
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center justify-center gap-5 mt-5 lg:mt-10 text-mediumText">
+        <p>Murojat uchun telefon:</p>
+        <p>+998 90 377 89 90</p>
+      </div>
+    </section>
+    <script>
+      const closeButton = document.querySelector("#closeButton");
+      const openMobileMenu = document.querySelector("#openMobileMenu");
+      const mobileMenu = document.querySelector("#mobileMenu");
+      const viloyat = document.getElementById("viloyat");
+      const tuman = document.getElementById("tuman");
+      closeButton.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        mobileMenu.classList.add("close");
+      });
+      openMobileMenu.addEventListener("click", () => {
+        mobileMenu.classList.remove("close");
+        mobileMenu.classList.add("open");
+      });
+    </script>
+  </body>
+</html>

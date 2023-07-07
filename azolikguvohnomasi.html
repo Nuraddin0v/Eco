@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>O'zbekiston Ekologik Partiyasi</title>
+    <meta name="title" content="O'zbekiston Ekologik Partiyasi" />
+    <meta name="description" content="O'zbekiston Ekologik Partiyasiga a'zolik sayti." />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://azolik.ecouz.uz/" />
+    <meta property="og:title" content="O'zbekiston Ekologik Partiyasi" />
+    <meta property="og:description" content="O'zbekiston Ekologik Partiyasiga a'zolik sayti." />
+    <meta property="og:image" content="/img/uzb.png" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://azolik.ecouz.uz/" />
+    <meta property="twitter:title" content="O'zbekiston Ekologik Partiyasi" />
+    <meta
+      property="twitter:description"
+      content="O'zbekiston Ekologik Partiyasiga a'zolik sayti."
+    />
+    <meta property="twitter:image" content="/img/uzb.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              colorgray: "#F2F2F2",
+              btnbackcolor: "#007BFF",
+              btncolor: "#FFFBFF",
+              colorback: "#3298DA",
+              bggreen: "#52c306",
+              bgGrey: "#202020",
+            },
+            fontSize: {
+              bigtext: "clamp(1.125rem, 1.7419rem + 1.2903vw, 1.75rem)",
+              mediumText: "clamp(1rem, 1.7419rem + 1.2903vw, 1.5rem)",
+              paragraph: "clamp(0.875rem, 0.81rem + 0.3252vw, 1.125rem)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .close {
+        right: -300px;
+        display: none;
+      }
+
+      .open {
+        right: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="bg-bggreen text-white w-full overflow-hidden">
+      <div class="container mx-auto flex justify-between">
+        <div class="px-5 xl:px-12 py-2 flex w-full justify-between items-center">
+          <a class="text-3xl font-bold font-heading" href="#">
+            <img class="h-12" src="/img/logo.png" alt="logo" />
+          </a>
+          <!-- Nav Links -->
+          <ul class="hidden md:flex px-2 font-semibold font-heading gap-4">
+            <li>
+              <a class="hover:text-gray-200 py-2 px-2" href="https://ecouz.uz/">Bosh sahifa</a>
+            </li>
+            <li><a class="hover:text-gray-200 py-2 px-2" href="#">A'zo bo'lish</a></li>
+            <li><a class="hover:text-gray-200 py-2 px-2" href="#">Obunalar tarixi</a></li>
+          </ul>
+        </div>
+
+        <button class="navbar-burger self-center mr-8 md:hidden" type="button" id="openMobileMenu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 hover:text-gray-200"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+      <div
+        class="absolute z-10 top-0 close bottom-0 w-[250px] bg-bgGrey transition-all duration-200 delay-200"
+        id="mobileMenu"
+      >
+        <button type="button" id="closeButton" class="px-4 py-2 absolute right-0">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-7 h-7 font-bold"
+          >
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <ul class="flex flex-col px-5 font-semibold font-heading gap-4 mt-10">
+          <li>
+            <a class="hover:text-gray-200 py-2 px-2" href="https://ecouz.uz/">Bosh sahifa</a>
+          </li>
+          <li><a class="hover:text-gray-200 py-2 px-2" href="#">A'zo bo'lish</a></li>
+          <li><a class="hover:text-gray-200 py-2 px-2" href="#">Obunalar tarixi</a></li>
+        </ul>
+      </div>
+    </nav>
+    <section id="boxes2" class="container mx-auto px-5">
+      <div class="w-full lg:w-[40%] lg:mx-auto flex items-center justify-center">
+        <div>
+          <img class="w-full my-10" src="/img/card2.jpg" alt="" />
+          <p class="text-center text-mediumText font-medium opacity-60 mb-5">
+            A'zolik tasdiqlangandan so'ng, a'zolik guvohnomasini yuklab olishingiz mumkin
+          </p>
+        </div>
+      </div>
+      <div class="flex items-center justify-between gap-5 mt-5 lg:mt-10 text-mediumText">
+        <button
+          type="button"
+          class="bg-blue-600 text-white text-bigtext uppercase px-10 py-3 rounded-2xl"
+        >
+          A'zolik guvohnomasiga<br />
+          buyurtma berish
+        </button>
+        <button
+          type="button"
+          class="bg-blue-600 text-white text-bigtext uppercase px-10 py-3 rounded-2xl"
+        >
+          A'zolik guvohnomasini<br />
+          yuklab olish
+        </button>
+      </div>
+    </section>
+    <script>
+      const closeButton = document.querySelector("#closeButton");
+      const openMobileMenu = document.querySelector("#openMobileMenu");
+      const mobileMenu = document.querySelector("#mobileMenu");
+      const viloyat = document.getElementById("viloyat");
+      const tuman = document.getElementById("tuman");
+      closeButton.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+        mobileMenu.classList.add("close");
+      });
+      openMobileMenu.addEventListener("click", () => {
+        mobileMenu.classList.remove("close");
+        mobileMenu.classList.add("open");
+      });
+    </script>
+  </body>
+</html>

@@ -37,6 +37,7 @@
             },
             fontSize: {
               title: "clamp(1.75rem, 1.7419rem + 1.2903vw, 2.5rem)",
+              mediumText: "clamp(1rem, 1.7419rem + 1.2903vw, 1.5rem)",
               paragraph: "clamp(0.875rem, 0.81rem + 0.3252vw, 1.125rem)",
             },
           },
@@ -189,13 +190,36 @@
               </div>
             </section>
             <div class="flex lg:px-7 items-center">
-              <input class="w-12 h-12 mr-5" type="checkbox" />
+              <input id="modal-switch" class="w-12 h-12 mr-5" type="checkbox" />
               <button
                 class="text-center w-full py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition"
               >
                 Tasdiqlayman
               </button>
             </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full h-full absolute top-0 left-0 invisible" id="modal-div">
+        <div id="modal-bg" class="w-full h-full bg-[#aaa] opacity-70 top-0 absolute hidden"></div>
+        <div
+          id="modal-box"
+          class="sm:w-[385px] sm:min-w-[40vw] min-w-[80vw] min-h-[50vh] flex flex-col items-center gap-2 -translate-y-1/2 p-6 bg-[#FFFFEB] rounded-lg top-1/2 left-1/2 -translate-x-1/2 absolute hidden"
+        >
+          <span class="text-2xl font-medium">Kelishuv shartlari</span>
+          <p class="text-center text-mediumText">
+            O'zbekiston Ekologik partiyasiga a'zo bo'lgan taqdirizda xar oy a'zolik badal to'lovi
+            belgilanadi. A'zolik badali O'zbekiston Ekologik partiyasi tomonidan bugungi kundan
+            kelib chiqib belgilangan badal miqdori 3000 so'm deb belgilanganligini ma'lum qiladi.
+            Siz o'z roziligingizdan kelib chiqib xar oy a'zolik badali to'lashni tasdiqlang.
+          </p>
+          <div class="flex w-full items-center">
+            <input id="modal-switch" class="w-12 h-12 mr-5" type="checkbox" />
+            <button
+              class="text-center w-full py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition"
+            >
+              Tasdiqlayman
+            </button>
           </div>
         </div>
       </div>
@@ -213,6 +237,30 @@
       openMobileMenu.addEventListener("click", () => {
         mobileMenu.classList.remove("close");
         mobileMenu.classList.add("open");
+      });
+
+      const modalbg = document.getElementById("modal-bg");
+      const modalDiv = document.getElementById("modal-div");
+      const modalSwitch = document.getElementById("modal-switch");
+      const modalBox = document.getElementById("modal-box");
+      const modalClose = document.getElementById("modal-close");
+      modalbg.addEventListener("click", function () {
+        modalBox.classList.add("hidden");
+        modalbg.classList.add("hidden");
+        modalDiv.classList.remove("visible");
+        modalDiv.classList.add("invisible");
+      });
+      modalSwitch.addEventListener("click", function () {
+        modalBox.classList.remove("hidden");
+        modalbg.classList.remove("hidden");
+        modalDiv.classList.add("visible");
+        modalDiv.classList.remove("invisible");
+      });
+      modalClose.addEventListener("click", function () {
+        modalBox.classList.remove("hidden");
+        modalbg.classList.remove("hidden");
+        modalDiv.classList.remove("visible");
+        modalDiv.classList.add("invisible");
       });
 
       function getViloyat() {
