@@ -22,6 +22,12 @@
       content="O'zbekiston Ekologik Partiyasiga a'zolik sayti."
     />
     <meta property="twitter:image" content="/img/uzb.png" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -155,6 +161,26 @@
         mobileMenu.classList.remove("close");
         mobileMenu.classList.add("open");
       });
+      setInterval(() => {
+        Toastify({
+          text: "This is a toast",
+          duration: 50000,
+          close: true,
+          gravity: "top",
+          position: "right",
+          stopOnFocus: true, // Prevents dismissing of toast on hover
+          style: {
+            background: "#52c306",
+            color: "#fff",
+            display: "flex",
+            gap: "10px",
+            borderRadius: "5px",
+            fontSize: "18px",
+            padding: "10px 30px",
+          },
+          onClick: function () {}, // Callback after click
+        }).showToast();
+      }, 1000);
     </script>
   </body>
 </html>
