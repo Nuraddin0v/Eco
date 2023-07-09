@@ -127,33 +127,44 @@
             </p>
           </div>
           <div class="mx-auto w-full">
-            <section class="container lg:p-6 font-mono">
-              <div class="w-full flex justify-center flex-col gap-8">
-                <div class="flex items-center gap-5">
-                  <h3 class="font-semibold text-2xl w-32">F.I.Sh</h3>
-                  <h3 class="font-medium text-xl bg-gray-400 px-7 py-2 rounded w-full">
-                    ERGASHEV JAHONGIR ABDUSATTOROVICH
-                  </h3>
+            <form id="submitForm">
+              <div class="container lg:p-6 font-mono">
+                <div class="w-full flex justify-center flex-col gap-8">
+                  <div class="flex items-center gap-5">
+                    <h3 class="font-semibold text-2xl w-32">F.I.Sh</h3>
+                    <h3 class="font-medium text-xl bg-gray-400 px-7 py-2 rounded w-full">
+                      ERGASHEV JAHONGIR ABDUSATTOROVICH
+                    </h3>
+                  </div>
+                  <div class="flex items-center gap-5">
+                    <h3 class="font-semibold text-2xl w-32">TEL</h3>
+                    <h3 class="font-medium text-xl bg-gray-400 px-7 py-2 rounded w-full">
+                      +998903778990
+                    </h3>
+                  </div>
+                  <textarea
+                    required
+                    placeholder="Yetkazib berish manzili haqida qisqa ma'lumt bering..."
+                    id="addressAbout"
+                    name="addressAbout"
+                    rows="4"
+                    class="w-full border border-1 border-gray-600 rounded px-3 py-2 placeholder:text-gray-600"
+                  ></textarea>
                 </div>
-                <div class="flex items-center gap-5">
-                  <h3 class="font-semibold text-2xl w-32">TEL</h3>
-                  <h3 class="font-medium text-xl bg-gray-400 px-7 py-2 rounded w-full">
-                    +998903778990
-                  </h3>
-                </div>
+                <p class="text-center text-bigtext font-medium opacity-60 mb-5 mt-10">
+                  Buyurtma berish 10 ming so'm
+                </p>
               </div>
-              <p class="text-center text-bigtext font-medium opacity-60 mb-5 mt-10">
-                Buyurtma berish 10 ming so'm
-              </p>
-            </section>
-            <div class="flex lg:px-7 items-center mt-5">
-              <input class="w-12 h-12 mr-5" type="checkbox" />
-              <button
-                class="text-center w-full py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition"
-              >
-                Tasdiqlayman
-              </button>
-            </div>
+              <div class="flex lg:px-7 items-center mt-5">
+                <button
+                  class="text-center w-full py-3 rounded-lg text-btnbackcolor border-2 border-btnbackcolor hover:bg-btnbackcolor hover:text-btncolor transition"
+                  id="submit"
+                  type="submit"
+                >
+                  Tasdiqlayman
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
@@ -166,8 +177,6 @@
       const closeButton = document.querySelector("#closeButton");
       const openMobileMenu = document.querySelector("#openMobileMenu");
       const mobileMenu = document.querySelector("#mobileMenu");
-      const viloyat = document.getElementById("viloyat");
-      const tuman = document.getElementById("tuman");
       closeButton.addEventListener("click", () => {
         mobileMenu.classList.remove("open");
         mobileMenu.classList.add("close");
@@ -175,6 +184,12 @@
       openMobileMenu.addEventListener("click", () => {
         mobileMenu.classList.remove("close");
         mobileMenu.classList.add("open");
+      });
+      const submitForm = document.getElementById("submitForm");
+      submitForm.addEventListener("submit", function onSubmitForm(e) {
+        e.preventDefault();
+        const { addressAbout } = document.forms[0];
+        console.log(addressAbout.value);
       });
     </script>
   </body>
