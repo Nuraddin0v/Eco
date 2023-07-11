@@ -22,6 +22,7 @@
       content="O'zbekiston Ekologik Partiyasiga a'zolik sayti."
     />
     <meta property="twitter:image" content="/img/uzb.png" />
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -47,14 +48,108 @@
     </script>
   </head>
   <body>
-    <section class="container mx-auto flex flex-col md:flex-row rounded shadow">
-      <div class="flex items-center justify-center">
-        <div><img src="./img/payme_01.svg" alt="payme icon" /></div>
-        <div></div>
-        <div></div>
+    <section class="container mx-auto">
+      <div class="flex flex-col md:flex-row rounded box-border h-screen px-5 py-5">
+        <div class="flex flex-1 flex-col justify-center p-5 sm:p-10 shadow min-h-[400px]">
+          <div class="flex justify-between w-full border-b-2 pb-10">
+            <img src="./img/payme_01.svg" alt="payme icon" class="h-10 ml-7" /><box-icon
+              size="md"
+              name="file"
+              color="grey"
+            ></box-icon>
+          </div>
+          <div class="py-7 border-b-2">
+            <h4 class="font-bold text-gray-500 text-lg">
+              Код заказа: <span class="font-normal">197</span>
+            </h4>
+          </div>
+          <div class="pt-5 font-medium text-gray-700">
+            <h4 class="text-lg">Сумма платежа:</h4>
+            <h3 class="text-3xl">10,000 <span class="text-lg">сум</span></h3>
+          </div>
+        </div>
+        <div class="flex flex-1 flex-col justify-center p-5 sm:p-10 shadow">
+          <h2 class="mb-4 text-xl lg:text-2xl font-medium">Оплата без регистрации</h2>
+          <form class="w-full">
+            <div class="flex flex-col mb-4">
+              <label class="mb-3 text-normal" for="number">Номер карты</label>
+              <input
+                class="border-gray-300 border-2 py-2 px-3 lg:px-6 lg: py-3 rounded-lg text-normal lg:text-lg placeholder:text-normal placeholder:lg:text-lg"
+                type="text"
+                id="number"
+                name="number"
+                min="0"
+                placeholder="____ ____ ____ ____"
+              />
+            </div>
+            <div class="flex flex-col">
+              <label class="mb-3 text-normal" for="date"> Срок действия карты</label>
+              <input
+                class="border-gray-300 border-2 py-2 px-3 lg:px-6 lg: py-3 rounded-lg text-normal lg:text-lg placeholder:text-normal placeholder:lg:text-lg"
+                type="text"
+                id="date"
+                name="date"
+                placeholder="__/__"
+              />
+            </div>
+            <div class="flex items-center w-full gap-5 mt-5">
+              <button
+                type="reset"
+                class="flex-1 py-3 px-5 border-2 border-gray-300 rounded-lg text-normal lg:text-lg"
+              >
+                Отмена
+              </button>
+              <button
+                type="submit"
+                class="flex-1 py-3 px-5 border-2 border-gray-[#4DB6AC] rounded-lg text-white bg-[#4DB6AC] text-normal lg:text-lg"
+              >
+                Оплатить
+              </button>
+            </div>
+          </form>
+          <h2 class="mb-4 text-xl lg:text-2xl font-medium mt-10">Вход</h2>
+          <form class="w-full">
+            <div class="flex flex-col mb-4">
+              <label class="mb-3 text-normal" for="number">Номер телефона</label>
+              <input
+                class="border-gray-300 border-2 py-2 px-3 lg:px-6 lg: py-3 rounded-lg text-normal lg:text-lg placeholder:text-normal placeholder:lg:text-lg"
+                type="text"
+                id="number"
+                name="number"
+                placeholder="+998 -- --- -- --"
+              />
+            </div>
+          </form>
+        </div>
       </div>
-      <div></div>
     </section>
-    <script></script>
+    <script>
+      function cc_format(value) {
+        var v = value.replace(/\s+/g, "").replace(/[^0-9]/gi, "");
+        var matches = v.match(/\d{4,16}/g);
+        var match = (matches && matches[0]) || "";
+        var parts = [];
+        for (i = 0, len = match.length; i < len; i += 4) {
+          parts.push(match.substring(i, i + 4));
+        }
+        if (parts.length) {
+          return parts.join(" ");
+        } else {
+          return value;
+        }
+      }
+
+      onload = function () {
+        document.getElementById("number").oninput = function () {
+          this.value = cc_format(this.value);
+        };
+        document.getElementById("date").oninput = function () {
+          this.value =
+            this.value.replace(/\//g, "").substring(0, 2) +
+            (this.value.length > 2 ? "/" : "") +
+            this.value.replace(/\//g, "").substring(2, 4);
+        };
+      };
+    </script>
   </body>
 </html>
