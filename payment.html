@@ -70,7 +70,7 @@
         </div>
         <div class="flex flex-1 flex-col justify-center p-5 sm:p-10 shadow">
           <h2 class="mb-4 text-xl lg:text-2xl font-medium">Оплата без регистрации</h2>
-          <form class="w-full">
+          <form class="w-full" id="submitForm">
             <div class="flex flex-col mb-4">
               <label class="mb-3 text-normal" for="number">Номер карты</label>
               <input
@@ -78,6 +78,7 @@
                 type="text"
                 id="number"
                 name="number"
+                required
                 min="0"
                 placeholder="____ ____ ____ ____"
               />
@@ -88,6 +89,7 @@
                 class="border-gray-300 border-2 py-2 px-3 lg:px-6 lg: py-3 rounded-lg text-normal lg:text-lg placeholder:text-normal placeholder:lg:text-lg"
                 type="text"
                 id="date"
+                required
                 name="date"
                 placeholder="__/__"
               />
@@ -122,6 +124,31 @@
           </form>
         </div>
       </div>
+      <div class="w-full h-full fixed top-0 left-0 invisible" id="modal-div">
+        <div id="modal-bg" class="w-full h-full bg-[#aaa] opacity-70 top-0 absolute hidden"></div>
+        <div
+          id="modal-box"
+          class="sm:w-[600px] bg-white relative sm:min-w-[50vw] min-w-[80vw] sm:min-h-[250px] flex flex-col items-center gap-2 -translate-y-1/2 p-3 sm:p-6 rounded-lg top-1/2 left-1/2 -translate-x-1/2 absolute hidden"
+        >
+          <button type="button" id="modal-close" class="px-4 py-2 absolute top-2 right-0">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-7 h-7 font-bold"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          <div class="flex flex-col w-full items-center mt-10 mb-10">
+            <h3 class="text-xl sm:text-2xl md:text-3xl font-semibold text-center mb-3">
+              Tasdiqlash kodini kiriting:
+            </h3>
+          </div>
+        </div>
+      </div>
     </section>
     <script>
       function cc_format(value) {
@@ -150,6 +177,36 @@
             this.value.replace(/\//g, "").substring(2, 4);
         };
       };
+
+      const modalbg = document.getElementById("modal-bg");
+      const modalDiv = document.getElementById("modal-div");
+      const modalBox = document.getElementById("modal-box");
+      const modalClose = document.getElementById("modal-close");
+      modalbg.addEventListener("click", function () {
+        modalBox.classList.add("hidden");
+        modalbg.classList.add("hidden");
+        modalDiv.classList.remove("visible");
+        modalDiv.classList.add("invisible");
+      });
+      modalClose.addEventListener("click", function () {
+        modalBox.classList.remove("hidden");
+        modalbg.classList.remove("hidden");
+        modalDiv.classList.remove("visible");
+        modalDiv.classList.add("invisible");
+      });
+
+      const submitForm = document.getElementById("submitForm");
+      submitForm.addEventListener("submit", function onSubmitForm(e) {
+        e.preventDefault();
+        const { date, number } = document.forms[0];
+
+        console.log(date.value, number.value);
+
+        modalBox.classList.remove("hidden");
+        modalbg.classList.remove("hidden");
+        modalDiv.classList.add("visible");
+        modalDiv.classList.remove("invisible");
+      });
     </script>
   </body>
 </html>
